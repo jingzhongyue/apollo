@@ -11,7 +11,7 @@ apollo_portal_db_username=root
 apollo_portal_db_password=9ehYFVrimrxVB8
 
 # meta server url, different environments should have different meta server addresses
-dev_meta=http://localhost:8080
+dev_meta=http://apollo-confsrv.sqaproxy.dasouche.net
 fat_meta=http://someIp:8080
 uat_meta=http://anotherIp:8080
 pro_meta=http://yetAnotherIp:8080
@@ -39,7 +39,11 @@ echo "==== building portal finished ===="
 
 echo "==== starting to build client ===="
 
-mvn clean install -DskipTests -pl apollo-client -am $META_SERVERS_OPTS
+#打本地
+#mvn clean install -DskipTests -pl apollo-client -am $META_SERVERS_OPTS
+
+#打到库
+mvn clean deploy -DskipTests -pl apollo-client -am $META_SERVERS_OPTS
 
 echo "==== building client finished ===="
 
